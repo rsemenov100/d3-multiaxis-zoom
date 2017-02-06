@@ -1,7 +1,7 @@
 {
-  "name": "d3-multiaxis-zoom",
-  "version": "1.0.4",
-  "description": "d3 plugin to allow zooming along multiple axes",
+  "name": "d3-xy-zoom",
+  "version": "1.0.0",
+  "description": "d3 plugin to allow zooming along X and Y axes independently",
   "main": "index.js",
   "scripts": {
     "build": "browserify index.js --s d3_multiaxis_zoom -o d3-multiaxis-zoom.js",
@@ -9,21 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/mathisonian/d3-multiaxis-zoom"
+    "url": "http://github.com/rsemenov100/d3-multiaxis-zoom"
   },
   "keywords": [
     "d3",
-    "zoom",
     "plugin",
-    "multi",
+    "independent",
     "zoom"
   ],
-  "author": "Matthew Conlen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mathisonian/d3-multiaxis-zoom/issues"
+    "url": "https://github.com/rsemenov100/d3-multiaxis-zoom/issues"
   },
-  "homepage": "https://github.com/mathisonian/d3-multiaxis-zoom",
+  "homepage": "https://github.com/rsemenov100/d3-multiaxis-zoom",
   "devDependencies": {
     "browserify": "^13.0.0"
   }

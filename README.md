@@ -8,7 +8,7 @@ d3 plugin to zoom along multiple axes independently
 
 zooming behaves normally until modifier keys are applied.
 
-* `meta + zoom` zooms only along the Y axis (⌘ on osx)
+* `ctrl + zoom` zooms only along the Y axis
 * `alt + zoom` zooms only along the X axis
 
 ## Usage
@@ -19,7 +19,7 @@ Script Tag:
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="../path/to/d3-multiaxis-zoom.js"></script>
 <script type="text/javascript">
-	
+
 	// Apply to plugin
 	d3_multiaxis_zoom(d3);
 

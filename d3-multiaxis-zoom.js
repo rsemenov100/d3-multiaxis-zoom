@@ -18,7 +18,7 @@ if (typeof module !== 'undefined') {
 
 
 var Plugin = function(d3) {
-  
+
 function d3_class(ctor, properties) {
   for (var key in properties) {
     Object.defineProperty(ctor.prototype, key, {
@@ -228,7 +228,7 @@ function d3_mousePoint(container, e) {
       d3_mouse_bug44083 = !(ctm.f || ctm.e);
       svg.remove();
     }
-    if (d3_mouse_bug44083) point.x = e.pageX, point.y = e.pageY; else point.x = e.clientX, 
+    if (d3_mouse_bug44083) point.x = e.pageX, point.y = e.pageY; else point.x = e.clientX,
     point.y = e.clientY;
     point = point.matrixTransform(container.getScreenCTM().inverse());
     return [ point.x, point.y ];
@@ -2310,7 +2310,7 @@ d3.behavior.zoom = function() {
     l = point(l);
     if (d3.event.altKey) {
       view.x += p[0] - l[0];
-    } else if (d3.event.metaKey) {
+    } else if (d3.event.ctrlKey) {
       view.y += p[1] - l[1];
     } else {
       view.x += p[0] - l[0];
@@ -2448,7 +2448,7 @@ d3.behavior.zoom = function() {
   }
   function mousewheeled() {
     var dispatch = event.of(this, arguments);
-    if (mousewheelTimer) clearTimeout(mousewheelTimer); else translate0 = location(center0 = center || d3.mouse(this)), 
+    if (mousewheelTimer) clearTimeout(mousewheelTimer); else translate0 = location(center0 = center || d3.mouse(this)),
     d3_selection_interrupt.call(this), zoomstarted(dispatch);
     mousewheelTimer = setTimeout(function() {
       mousewheelTimer = null;
@@ -2457,7 +2457,7 @@ d3.behavior.zoom = function() {
     d3_eventPreventDefault();
     if (d3.event.altKey) {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, view.ky);
-    } else if (d3.event.metaKey) {
+    } else if (d3.event.ctrlKey) {
       scaleTo(view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
     } else {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
@@ -2469,7 +2469,7 @@ d3.behavior.zoom = function() {
     var p = d3.mouse(this), kx = Math.log(view.kx) / Math.LN2, ky = Math.log(view.ky) / Math.LN2;
     if (d3.event.altKey) {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, ky);
-    } else if (d3.event.metaKey) {
+    } else if (d3.event.ctrlKey) {
       zoomTo(this, p, location(p), kx, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
     } else {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
@@ -2490,5 +2490,6 @@ var d3_behavior_zoomDelta, d3_behavior_zoomWheel = "onwheel" in d3_document ? (d
 }
 
 module.exports = Plugin;
+
 },{}]},{},[1])(1)
 });
