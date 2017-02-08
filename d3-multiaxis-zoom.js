@@ -2308,9 +2308,9 @@ d3.behavior.zoom = function() {
   }
   function translateTo(p, l) {
     l = point(l);
-    if (d3.event.altKey) {
+    if (Plugin.zoomMode == Plugin.ZoomModeEnum.X) {
       view.x += p[0] - l[0];
-    } else if (d3.event.ctrlKey) {
+    } else if (Plugin.zoomMode == Plugin.ZoomModeEnum.Y) {
       view.y += p[1] - l[1];
     } else {
       view.x += p[0] - l[0];
@@ -2455,9 +2455,9 @@ d3.behavior.zoom = function() {
       zoomended(dispatch);
     }, 50);
     d3_eventPreventDefault();
-    if (d3.event.altKey) {
+    if (Plugin.zoomMode == Plugin.ZoomModeEnum.X) {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, view.ky);
-    } else if (d3.event.ctrlKey) {
+    } else if (Plugin.zoomMode == Plugin.ZoomModeEnum.Y) {
       scaleTo(view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
     } else {
       scaleTo(Math.pow(2, d3_behavior_zoomDelta() * .002) * view.kx, Math.pow(2, d3_behavior_zoomDelta() * .002) * view.ky);
@@ -2467,9 +2467,9 @@ d3.behavior.zoom = function() {
   }
   function dblclicked() {
     var p = d3.mouse(this), kx = Math.log(view.kx) / Math.LN2, ky = Math.log(view.ky) / Math.LN2;
-    if (d3.event.altKey) {
+    if (Plugin.zoomMode == Plugin.ZoomModeEnum.X) {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, ky);
-    } else if (d3.event.ctrlKey) {
+    } else if (Plugin.zoomMode == Plugin.ZoomModeEnum.Y) {
       zoomTo(this, p, location(p), kx, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
     } else {
       zoomTo(this, p, location(p), d3.event.shiftKey ? Math.ceil(kx) - 1 : Math.floor(ky) + 1, d3.event.shiftKey ? Math.ceil(ky) - 1 : Math.floor(ky) + 1);
@@ -2489,6 +2489,17 @@ var d3_behavior_zoomDelta, d3_behavior_zoomWheel = "onwheel" in d3_document ? (d
 }, "MozMousePixelScroll");
 }
 
+Plugin.ZoomModeEnum = {
+  BOTH: 0,
+  X: 1,
+  Y: 2
+};
+
+Plugin.zoomMode = Plugin.ZoomModeEnum.BOTH;
+
+Plugin.setZoomMode = function(zoomMode) {
+  Plugin.zoomMode = zoomMode;
+}
 module.exports = Plugin;
 
 },{}]},{},[1])(1)
